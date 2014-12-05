@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /**
  *
  * @author guillaume
@@ -5,21 +8,13 @@
 public class Fichier extends Element {
     
     private int taille;
-    
-    private String contenu;
-    
-    public String lire()
-    {
-        return contenu;
+
+    public Fichier(String name, Date creation, Date lastModified, String path) {
+        super(name, creation, lastModified, path);
     }
-    
-    public void ecrire(String contenu)
-    {
-        this.contenu = contenu;
-    }
-    
-    public int getTaille()
-    {
+
+    @Override
+    public int taille() {
         return taille;
     }
 }
