@@ -1,3 +1,5 @@
+package navigateur.initial;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,8 +10,8 @@
  *
  * @author owner
  */
-public interface OpenObserver{
+public interface ActivateObserver{
 
-    public abstract void updateOpen(Element e);
+    public abstract void updateActivate(Element e);
     
 }

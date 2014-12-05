@@ -1,3 +1,5 @@
+package navigateur.initial;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,5 +38,12 @@ public class Dossier extends Element implements DeleteObserver {
         elements.remove(e);
         notifyChange();
     }
+
+    public boolean add(Element e) {
+        e.setPath(this.path);
+        return elements.add(e);
+    }
+    
+    
     
 }

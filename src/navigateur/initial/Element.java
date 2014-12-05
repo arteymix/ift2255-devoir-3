@@ -1,3 +1,5 @@
+package navigateur.initial;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -142,7 +144,7 @@ public abstract class Element implements Observable {
     }
 
     public void setPath(String path) {
-        this.path = path;
+        this.path = path + '\\' +this.name;
         notifyChange();
     }
 

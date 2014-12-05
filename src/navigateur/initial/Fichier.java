@@ -1,3 +1,5 @@
+package navigateur.initial;
+
 
 import java.util.Date;
 

@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
+package navigateur.gestionnaire;
+
 /**
  *
  * @author owner
  */
-public interface DeleteObserver{
-
-    public abstract void updateDelete(Element e);
+public class GestionnaireRaccourcis {
     
 }
