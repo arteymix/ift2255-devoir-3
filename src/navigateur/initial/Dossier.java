@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class Dossier extends Element implements DeleteObserver {
     
-    private List<Element> elements; 
+    private final List<Element> elements; 
 
     public Dossier(String name, Date creation, Date lastModified, String path) {
         super(name, creation, lastModified, path);
@@ -27,7 +27,7 @@ public class Dossier extends Element implements DeleteObserver {
     @Override
     public int taille() {
         int t = 0;
-        for(Element e : elements){
+        for (Element e : elements){
             t += e.taille();
         }
         return t;

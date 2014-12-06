@@ -1,15 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package navigateur.raccourcis;
+
+import java.util.Date;
 
 /**
  *
  * @author owner
  */
-public class ElementRaccourciable {
-    
+public abstract class ElementRaccourciable extends navigateur.initial.Element {
+
+    public ElementRaccourciable(String name, Date creation, Date lastModified, String path) {
+        super(name, creation, lastModified, path);
+    }
+
 }

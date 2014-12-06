@@ -26,19 +26,27 @@
 
   \subsection{Première requête de changement}
   Pour effectuer le changement, nous introduisons la classe \textsf{Raccourci}
-  l'agrégat vers la classe \textsf{Element}. Ainsi, une instance de
-  \textsf{Raccourci} sera liée à l'élément qu'elle pointe.
+  et \textsf{ElementRaccourciable}. Un raccourci possède un agrégat vers une
+  instance d'\textsf{ElementRaccourciable}.
 
   % ajouter le petit diagramme ici
-  \begin{figure}
-  \caption{Ajout de classe Raccourci au diagramme de classes}
-  \end{figure}
+  \begin{sidewaysfigure}
+  \centering
+  \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-gestionnaire.tex}}
+  \caption{Diagramme de classes pour les raccourcis}
+  \end{sidewaysfigure}
 
   Il s'agit d'une version modifiée du partron décorateur utilisé pour
   \textsf{ElementDecorator}, car un agrégat le lie à l'élément qu'il pointe.
 
-  L'implantation possède un ensemble d'impact réduit qui comporte uniquement la
-  classe \textsf{Element}.
+  Les classes \textsf{Fichier} et \textsf{Dossier} seront impactés, car elles
+  devront désormais hériter de la classe \textsf{ElementRaccourciable}.
+
+  Il faut aussi déplacer la fonction \textsf{taille} de la classe
+  \textsf{Element} vers la nouvelle classe \textsf{ElementRaccourciable}, car un
+  raccourci ne possède pas de taille à proprement parler. On évite notamment un
+  problème cycle pour le calcul de la taille d'un dossier dans le cas ou un
+  dossier contiendrait un raccourcis qui pointerait vers ce même dossier.
 
   \subsection{Deuxième requête de changement}
   Pour implanter ce changement, nous faisons implanter l'interface
@@ -46,9 +54,16 @@
   raccouci est notifié lorsque son élément est détruit.
 
   % ajout du deuxième diagramme
-  \begin{figure}
-  \caption{Implantation de l'interface DeleteObserver pour la classe Raccourci}
-  \end{figure}
+  \begin{sidewaysfigure}
+  \centering
+  \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-gestionnaire.tex}}
+  \caption{Diagramme de classes pour le gestionnaire de raccourcis}
+  \end{sidewaysfigure}
+
+  Lorsqu'un un raccourcis est créé, il attache le gestionnaire et tant que
+  DeleteObserver de l'élément qu'il pointe. Lorsque l'élément pointé est
+  supprimé, le gestionnaire capture l'événement et est en mesure de supprimer le
+  raccourcis approprié.
 
   L'implantation a pour ensemble d'impact initial la \textsf{Element} et
   l'interface \textsf{DeleteObserver}.

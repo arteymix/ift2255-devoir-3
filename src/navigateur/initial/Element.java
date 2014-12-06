@@ -1,15 +1,9 @@
 package navigateur.initial;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author guillaume
@@ -37,7 +31,7 @@ public abstract class Element implements Observable {
         this.openObservers = new ArrayList<>();
         this.deleteObservers = new ArrayList<>();
     }
-    
+
     public abstract int taille();
 
     public void ouvrir() {
@@ -48,10 +42,10 @@ public abstract class Element implements Observable {
         notifyClose();
     }
 
-    public void delete(){
+    public void delete() {
         notifyDelete();
     }
-    
+
     @Override
     public void attacher(ActivateObserver e) {
         this.activateObservers.add(e);
@@ -79,35 +73,35 @@ public abstract class Element implements Observable {
 
     @Override
     public void notifyActivate() {
-        for(ActivateObserver a : activateObservers){
+        for (ActivateObserver a : activateObservers) {
             a.updateActivate(this);
         }
     }
 
     @Override
     public void notifyDelete() {
-        for(DeleteObserver a : deleteObservers){
+        for (DeleteObserver a : deleteObservers) {
             a.updateDelete(this);
         }
     }
 
     @Override
     public void notifyOpen() {
-        for(OpenObserver a : openObservers){
+        for (OpenObserver a : openObservers) {
             a.updateOpen(this);
         }
     }
 
     @Override
     public void notifyClose() {
-        for(CloseObserver a : closeObservers){
+        for (CloseObserver a : closeObservers) {
             a.updateClose(this);
         }
     }
 
     @Override
     public void notifyChange() {
-            for(ChangeObserver a : changeObservers){
+        for (ChangeObserver a : changeObservers) {
             a.updateChange(this);
         }
     }
@@ -144,7 +138,7 @@ public abstract class Element implements Observable {
     }
 
     public void setPath(String path) {
-        this.path = path + '\\' +this.name;
+        this.path = path + '\\' + this.name;
         notifyChange();
     }
 

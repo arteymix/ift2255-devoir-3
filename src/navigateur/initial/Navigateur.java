@@ -1,6 +1,5 @@
 package navigateur.initial;
 
-
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ public class Navigateur implements ActivateObserver, ChangeObserver, CloseObserv
         if (instance == null) {
             instance = new Navigateur();
         }
-        
+
         return instance;
     }
 

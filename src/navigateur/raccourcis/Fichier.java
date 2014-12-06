@@ -1,17 +1,12 @@
-package navigateur.initial;
+package navigateur.raccourcis;
 
 import java.util.Date;
 
 /**
- *
+ * 
  * @author guillaume
  */
-public class Fichier extends Element {
-
-    /**
-     * Taille du fichier en octets.
-     */
-    private int taille;
+public class Fichier extends ElementRaccourciable {
 
     public Fichier(String name, Date creation, Date lastModified, String path) {
         super(name, creation, lastModified, path);
@@ -19,6 +14,7 @@ public class Fichier extends Element {
 
     @Override
     public int taille() {
-        return taille;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
