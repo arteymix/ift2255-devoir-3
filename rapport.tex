@@ -9,32 +9,67 @@
 \usepackage{rotating}
 \usepackage{tikz}
 
+\title{IFT2255 -- Génie logiciel \\Devoir 3}
+\author{Vincent Antaki \\ Guillaume Poirier-Morency \\ Émile Trottier}
+
 \begin{document}
+
+  \maketitle
+
+  \abstract
+  L'objectif du travail est d'analyser et conçevoir un système confronté à une
+  série de changements.
+
+  Le projet a été séparé en trois paquetages Java. Pour minimiser
+  l'implantation, les classes non-modifiées sont réutilisés depuis les
+  paquetages précédents.
+
+  Le projet est accompagné d'une série de tests JUnit au lieu de spécifier une
+  classe \textsf{Main}. C'est plus simple et cela nous permet de soumettre notre
+  implantation à des cas d'utilisation plus réalistes.
 
   \section{Diagramme de classes initial}
   \begin{sidewaysfigure}
-  \centering
-  \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes.tex}}
-  \caption{Diagramme de classes initial}
+    \centering
+    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes.tex}}
+    \caption{Diagramme de classes initial}
   \end{sidewaysfigure}
 
   \section{Diagramme de classe modifié}
+  \begin{sidewaysfigure}
+    \centering
+    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-b.tex}}
+    \caption{Diagramme de classes}
+  \end{sidewaysfigure}
 
-  \section{Client}
+  \section{Diagramme de classe avec \textsf{Client}}
+  \begin{sidewaysfigure}
+    \centering
+    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-b.tex}}
+    \caption{Diagramme de classes}
+  \end{sidewaysfigure}
 
   \section{Changements}
 
+  Pour les deux sous-sections qui suivent:
+  \begin{itemize}
+    \item identifier les concepts pertinents
+    \item préciser l'impact
+    \item préciser si l'impact est localisé
+  \end{itemize}
+
   \subsection{Première requête de changement}
+
   Pour effectuer le changement, nous introduisons la classe \textsf{Raccourci}
   et \textsf{ElementRaccourciable}. Un raccourci possède un agrégat vers une
   instance d'\textsf{ElementRaccourciable}.
 
   % ajouter le petit diagramme ici
-  \begin{sidewaysfigure}
-  \centering
-  \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-gestionnaire.tex}}
-  \caption{Diagramme de classes pour les raccourcis}
-  \end{sidewaysfigure}
+  \begin{figure}
+    \centering
+    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-changement-1.tex}}
+    \caption{Diagramme de classes pour les raccourcis}
+  \end{figure}
 
   Il s'agit d'une version modifiée du partron décorateur utilisé pour
   \textsf{ElementDecorator}, car un agrégat le lie à l'élément qu'il pointe.
@@ -54,11 +89,11 @@
   raccouci est notifié lorsque son élément est détruit.
 
   % ajout du deuxième diagramme
-  \begin{sidewaysfigure}
-  \centering
-  \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-gestionnaire.tex}}
-  \caption{Diagramme de classes pour le gestionnaire de raccourcis}
-  \end{sidewaysfigure}
+  \begin{figure}
+    \centering
+    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-changement-2.tex}}
+    \caption{Diagramme de classes pour le gestionnaire de raccourcis}
+  \end{figure}
 
   Lorsqu'un un raccourcis est créé, il attache le gestionnaire et tant que
   DeleteObserver de l'élément qu'il pointe. Lorsque l'élément pointé est
