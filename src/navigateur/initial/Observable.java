@@ -1,22 +1,28 @@
 package navigateur.initial;
 
+import navigateur.initial.ChangeObserver;
+
 /**
  *
  * @author owner
  */
 public interface Observable {
 
-    public abstract void attacher(ActivateObserver e);
+    public abstract void attach(DeleteObserver e);
 
-    public abstract void attacher(DeleteObserver e);
+    public abstract void attach(OpenObserver e);
 
-    public abstract void attacher(OpenObserver e);
+    public abstract void attach(CloseObserver e);
 
-    public abstract void attacher(CloseObserver e);
+    public abstract void attach(ChangeObserver e);
 
-    public abstract void attacher(ChangeObserver e);
+    public abstract void detach(DeleteObserver e);
 
-    public abstract void notifyActivate();
+    public abstract void detach(OpenObserver e);
+
+    public abstract void detach(CloseObserver e);
+
+    public abstract void detach(ChangeObserver e);
 
     public abstract void notifyDelete();
 

@@ -1,5 +1,7 @@
 package navigateur.initial;
 
+import navigateur.initial.Element;
+
 /**
  *
  * @author owner

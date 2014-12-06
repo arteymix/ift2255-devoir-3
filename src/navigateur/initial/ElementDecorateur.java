@@ -6,16 +6,16 @@ package navigateur.initial;
  */
 public abstract class ElementDecorateur extends Element {
 
-    private final Element decorated;
+    private final Element decoratedElement;
 
     public ElementDecorateur(Element e) {
         super(e.name, e.creation, e.lastModified, e.path);
-        this.decorated = e;
+        this.decoratedElement = e;
     }
 
     @Override
     public int taille() {
-        return decorated.taille();
+        return decoratedElement.taille();
     }
 
 }

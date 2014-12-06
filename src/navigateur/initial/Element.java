@@ -14,7 +14,8 @@ public abstract class Element implements Observable {
     protected Date creation;
     protected Date lastModified;
     protected String path;
-    private final List<ActivateObserver> activateObservers;
+    protected boolean opened;
+
     private final List<DeleteObserver> deleteObservers;
     private final List<OpenObserver> openObservers;
     private final List<CloseObserver> closeObservers;
@@ -25,8 +26,9 @@ public abstract class Element implements Observable {
         this.creation = creation;
         this.lastModified = lastModified;
         this.path = path;
+        this.opened = false;
+
         this.changeObservers = new ArrayList<>();
-        this.activateObservers = new ArrayList<>();
         this.closeObservers = new ArrayList<>();
         this.openObservers = new ArrayList<>();
         this.deleteObservers = new ArrayList<>();
@@ -35,10 +37,12 @@ public abstract class Element implements Observable {
     public abstract int taille();
 
     public void ouvrir() {
+        opened = true;
         notifyOpen();
     }
 
     public void fermer() {
+        opened = false;
         notifyClose();
     }
 
@@ -47,35 +51,43 @@ public abstract class Element implements Observable {
     }
 
     @Override
-    public void attacher(ActivateObserver e) {
-        this.activateObservers.add(e);
-    }
-
-    @Override
-    public void attacher(DeleteObserver e) {
+    public void attach(DeleteObserver e) {
         this.deleteObservers.add(e);
     }
 
     @Override
-    public void attacher(OpenObserver e) {
+    public void attach(OpenObserver e) {
         this.openObservers.add(e);
     }
 
     @Override
-    public void attacher(CloseObserver e) {
+    public void attach(CloseObserver e) {
         this.closeObservers.add(e);
     }
 
     @Override
-    public void attacher(ChangeObserver e) {
+    public void attach(ChangeObserver e) {
         this.changeObservers.add(e);
     }
 
     @Override
-    public void notifyActivate() {
-        for (ActivateObserver a : activateObservers) {
-            a.updateActivate(this);
-        }
+    public void detach(DeleteObserver e) {
+        this.deleteObservers.remove(e);
+    }
+
+    @Override
+    public void detach(OpenObserver e) {
+        this.openObservers.remove(e);
+    }
+
+    @Override
+    public void detach(CloseObserver e) {
+        this.closeObservers.remove(e);
+    }
+
+    @Override
+    public void detach(ChangeObserver e) {
+        this.changeObservers.remove(e);
     }
 
     @Override
@@ -140,6 +152,10 @@ public abstract class Element implements Observable {
     public void setPath(String path) {
         this.path = path + '\\' + this.name;
         notifyChange();
+    }
+
+    public boolean getOpened() {
+        return opened;
     }
 
 }

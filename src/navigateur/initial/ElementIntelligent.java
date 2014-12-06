@@ -14,7 +14,7 @@ public class ElementIntelligent extends ElementDecorateur {
 
     }
 
-    public void autoevaluate() {
+    public void autoEvaluate() {
 
     }
 

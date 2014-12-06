@@ -1,9 +1,9 @@
 package navigateur.raccourcis;
 
 import java.util.Date;
-import navigateur.initial.Element;
 
 /**
+ * Raccourci qui pointe vers un ElementRaccourciable.
  *
  * @author owner
  */
@@ -21,11 +21,6 @@ public class Raccourci extends Element {
 
     public ElementRaccourciable getElement() {
         return elementPointe;
-    }
-
-    @Override
-    public int taille() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
