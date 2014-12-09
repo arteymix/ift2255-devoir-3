@@ -70,9 +70,12 @@
   à l'aide d'un patron visiteur.
 
   Le visiteur abstrait est spécialisé pour être accepté par un élément abstrait.
-  Ce qui nous permet de définir n'importe quel type de visiteur.
+  Ce qui nous permet de définir n'importe quel type de visiteur qui pourra
+  visiter n'importe quelle instance qui implante la classe \textsf{Element}.
 
-  Le visiteur de taille est une réalisation du visiteur abstrait
+  Le visiteur de taille \textsf{TailleVisiteur} est une réalisation du visiteur
+  abstrait et permet de compter le nombre de visites qu'un effectue lorsqu'il
+  est accepté par un élément donné.
 
   \section{Introduction de changements}
 
@@ -81,7 +84,6 @@
   et \textsf{ElementRaccourciable}. Un raccourci possède un agrégat vers une
   instance d'\textsf{ElementRaccourciable}.
 
-  % ajouter le petit diagramme ici
   \begin{figure}
     \centering
     \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-changement-1.tex}}
@@ -109,7 +111,6 @@
   \textsf{GestionnaireRaccourcis} et nous lui faisons implanter l'interface
   \textsf{DeleteObserver}.
 
-  % ajout du deuxième diagramme
   \begin{figure}
     \centering
     \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-changement-2.tex}}
