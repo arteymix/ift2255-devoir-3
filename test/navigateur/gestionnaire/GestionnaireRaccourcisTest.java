@@ -28,7 +28,7 @@ public class GestionnaireRaccourcisTest {
     @Test
     public void testUpdateDelete() {
 
-        Fichier fichier = new Fichier("test.java", new Date(), new Date(), "");
+        Fichier fichier = new Fichier("", "test.java", new Date(), new Date());
         Raccourci raccourci = new Raccourci(fichier, "shortcut vers test.java", new Date(), new Date(), "");
 
         assertTrue(GestionnaireRaccourcis.getInstance().getRaccourcis().contains(raccourci));

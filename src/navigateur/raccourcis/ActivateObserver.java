@@ -1,4 +1,4 @@
-package navigateur.initial;
+package navigateur.raccourcis;
 
 /**
  *
@@ -6,12 +6,12 @@ package navigateur.initial;
  * @author Vincent Antaki
  * @author Émile Trottier
  */
-public interface OpenObserver {
+public interface ActivateObserver{
 
     /**
      *
      * @param e
      */
-    public abstract void updateOpen(Element e);
-
+    public abstract void updateActivate(Dossier e);
+    
 }

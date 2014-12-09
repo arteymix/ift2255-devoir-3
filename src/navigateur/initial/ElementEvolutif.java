@@ -8,10 +8,17 @@ package navigateur.initial;
  */
 public class ElementEvolutif extends ElementDecorateur {
 
+    /**
+     *
+     * @param e
+     */
     public ElementEvolutif(Element e) {
         super(e);
     }
 
+    /**
+     *
+     */
     public void evoluer() {
         // evoluer...
     }

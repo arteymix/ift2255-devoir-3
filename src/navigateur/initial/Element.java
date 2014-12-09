@@ -12,10 +12,29 @@ import java.util.List;
  */
 public abstract class Element implements Observable {
 
+    /**
+     *
+     */
     protected String name;
+
+    /**
+     *
+     */
     protected Date creation;
+
+    /**
+     *
+     */
     protected Date lastModified;
+
+    /**
+     *
+     */
     protected String path;
+
+    /**
+     *
+     */
     protected boolean opened;
 
     private final List<DeleteObserver> deleteObservers;
@@ -23,7 +42,14 @@ public abstract class Element implements Observable {
     private final List<CloseObserver> closeObservers;
     private final List<ChangeObserver> changeObservers;
 
-    public Element(String name, Date creation, Date lastModified, String path) {
+    /**
+     *
+     * @param path
+     * @param name
+     * @param creation
+     * @param lastModified
+     */
+    public Element(String path, String name, Date creation, Date lastModified) {
         this.name = name;
         this.creation = creation;
         this.lastModified = lastModified;
@@ -36,62 +62,110 @@ public abstract class Element implements Observable {
         this.deleteObservers = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param visitor
+     */
     public abstract void accept(ElementVisitor visitor);
 
+    /**
+     *
+     */
     public void ouvrir() {
         opened = true;
         notifyOpen();
     }
 
+    /**
+     *
+     */
     public void fermer() {
         opened = false;
         notifyClose();
     }
 
+    /**
+     *
+     */
     public void delete() {
         notifyDelete();
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void attachDelete(DeleteObserver e) {
         this.deleteObservers.add(e);
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void attachOpen(OpenObserver e) {
         this.openObservers.add(e);
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void attachClose(CloseObserver e) {
         this.closeObservers.add(e);
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void attachChange(ChangeObserver e) {
         this.changeObservers.add(e);
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void detachDelete(DeleteObserver e) {
         this.deleteObservers.remove(e);
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void detachOpen(OpenObserver e) {
         this.openObservers.remove(e);
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void detachClose(CloseObserver e) {
         this.closeObservers.remove(e);
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void detachChange(ChangeObserver e) {
         this.changeObservers.remove(e);
     }
 
+    /**
+     *
+     */
     @Override
     public void notifyDelete() {
         for (DeleteObserver a : deleteObservers) {
@@ -99,6 +173,9 @@ public abstract class Element implements Observable {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void notifyOpen() {
         for (OpenObserver a : openObservers) {
@@ -106,6 +183,9 @@ public abstract class Element implements Observable {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void notifyClose() {
         for (CloseObserver a : closeObservers) {
@@ -113,6 +193,9 @@ public abstract class Element implements Observable {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void notifyChange() {
         for (ChangeObserver a : changeObservers) {
@@ -120,44 +203,88 @@ public abstract class Element implements Observable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
         notifyChange();
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getCreation() {
         return creation;
     }
 
+    /**
+     *
+     * @param creation
+     */
     public void setCreation(Date creation) {
         this.creation = creation;
         notifyChange();
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getLastModified() {
         return lastModified;
     }
 
+    /**
+     *
+     * @param lastModified
+     */
     public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
         notifyChange();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPath() {
         return path;
     }
 
+    /**
+     *
+     * @param path
+     */
     public void setPath(String path) {
-        this.path = path + '/' + this.name;
+        this.path = path;
         notifyChange();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean getOpened() {
         return opened;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getFullPath() {
+        return this.path + (this.path.endsWith("/") ? "" : '/') + this.name;
     }
 
 }

@@ -16,8 +16,15 @@ public class Dossier extends Element implements DeleteObserver {
 
     private final List<ActivateObserver> activateObservers;
 
-    public Dossier(String name, Date creation, Date lastModified, String path) {
-        super(name, creation, lastModified, path);
+    /**
+     *
+     * @param path
+     * @param creation
+     * @param lastModified
+     */
+    public Dossier(String path, Date creation, Date lastModified) {
+        super(path, path, creation, lastModified);
+        
         elements = new ArrayList<>();
         activateObservers = new ArrayList<>();
 
@@ -50,24 +57,42 @@ public class Dossier extends Element implements DeleteObserver {
         return elements.add(e);
     }
 
+    /**
+     *
+     */
     public void activate() {
         notifyActivate();
     }
 
+    /**
+     *
+     * @param observer
+     */
     public final void attachActivate(ActivateObserver observer) {
         activateObservers.add(observer);
     }
 
+    /**
+     *
+     * @param observer
+     */
     public void detachActivate(ActivateObserver observer) {
         activateObservers.remove(observer);
     }
 
+    /**
+     *
+     */
     public void notifyActivate() {
         for (ActivateObserver observer : activateObservers) {
             observer.updateActivate(this);
         }
     }
 
+    /**
+     *
+     * @param visitor
+     */
     @Override
     public void accept(ElementVisitor visitor) {
         visitor.visit(this);
@@ -78,6 +103,10 @@ public class Dossier extends Element implements DeleteObserver {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Element> getElements() {
         return elements;
     }

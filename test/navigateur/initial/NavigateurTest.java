@@ -1,7 +1,7 @@
 package navigateur.initial;
 
 import java.util.Date;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
@@ -21,7 +21,7 @@ public class NavigateurTest {
         Navigateur result = Navigateur.getInstance();
 
         // Respect du singleton
-        Assert.assertSame(Navigateur.getInstance(), Navigateur.getInstance());
+        assertSame(Navigateur.getInstance(), Navigateur.getInstance());
     }
 
     /**
@@ -30,11 +30,11 @@ public class NavigateurTest {
     @Test
     public void testUpdateActivate() {
 
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date());
 
         dossier.activate();
 
-        Assert.assertSame(dossier, Navigateur.getInstance().getDossierActif());
+        assertSame(dossier, Navigateur.getInstance().getDossierActif());
     }
 
     /**
@@ -43,15 +43,15 @@ public class NavigateurTest {
     @Test
     public void testUpdateClose() {
 
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date());
 
         dossier.ouvrir();
 
-        Assert.assertTrue(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
+        assertTrue(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
 
         dossier.fermer();
 
-        Assert.assertFalse(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
+        assertFalse(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
     }
 
     /**
@@ -59,12 +59,11 @@ public class NavigateurTest {
      */
     @Test
     public void testUpdateOpen() {
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date());
 
         dossier.ouvrir();
 
-        Assert.assertTrue(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
-
+        assertTrue(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
     }
 
     /**
@@ -73,15 +72,15 @@ public class NavigateurTest {
     @Test
     public void testUpdateDelete() {
 
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("", new Date(), new Date());
 
         dossier.ouvrir();
 
-        Assert.assertTrue(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
+        assertTrue(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
 
         dossier.delete();
 
-        Assert.assertFalse(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
+        assertFalse(Navigateur.getInstance().getDossiersOuverts().contains(dossier));
     }
 
 }

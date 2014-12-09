@@ -2,6 +2,8 @@ package navigateur.initial;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,6 +15,10 @@ public class Navigateur implements ActivateObserver, ChangeObserver, CloseObserv
 
     private static Navigateur instance;
 
+    /**
+     *
+     * @return
+     */
     public static Navigateur getInstance() {
         if (instance == null) {
             instance = new Navigateur();
@@ -31,11 +37,19 @@ public class Navigateur implements ActivateObserver, ChangeObserver, CloseObserv
         dossiersOuverts = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void updateActivate(Dossier e) {
         dossierActif = e;
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void updateClose(Element e) {
         if (e instanceof Dossier && dossiersOuverts.contains((Dossier) e)) {
@@ -43,14 +57,21 @@ public class Navigateur implements ActivateObserver, ChangeObserver, CloseObserv
         }
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void updateOpen(Element e) {
         if (e instanceof Dossier && !dossiersOuverts.contains((Dossier) e)) {
             dossiersOuverts.add((Dossier) e);
-            System.out.println("Ouverture du dossier " + e.getName() + " situé à " + e.getPath());
         }
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void updateDelete(Element e) {
         if (e instanceof Dossier && dossiersOuverts.contains((Dossier) e)) {
@@ -58,15 +79,27 @@ public class Navigateur implements ActivateObserver, ChangeObserver, CloseObserv
         }
     }
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void updateChange(Element e) {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Dossier> getDossiersOuverts() {
         return dossiersOuverts;
     }
 
+    /**
+     *
+     * @return
+     */
     public Dossier getDossierActif() {
         return dossierActif;
     }

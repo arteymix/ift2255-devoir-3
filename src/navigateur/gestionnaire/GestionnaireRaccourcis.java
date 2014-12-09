@@ -16,6 +16,10 @@ public class GestionnaireRaccourcis implements DeleteObserver {
 
     private static GestionnaireRaccourcis instance;
 
+    /**
+     *
+     * @return
+     */
     public static GestionnaireRaccourcis getInstance() {
         if (instance == null) {
             instance = new GestionnaireRaccourcis();
@@ -44,6 +48,10 @@ public class GestionnaireRaccourcis implements DeleteObserver {
         raccourcis.removeIf((Raccourci r) -> r.getElement() == e);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Raccourci> getRaccourcis() {
         return raccourcis;
     }

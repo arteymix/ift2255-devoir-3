@@ -13,10 +13,21 @@ public class Fichier extends ElementRaccourciable {
 
     private int taille;
 
-    public Fichier(String name, Date creation, Date lastModified, String path) {
-        super(name, creation, lastModified, path);
+    /**
+     *
+     * @param path
+     * @param name
+     * @param creation
+     * @param lastModified
+     */
+    public Fichier(String path, String name, Date creation, Date lastModified) {
+        super(path, name, creation, lastModified);
     }
 
+    /**
+     *
+     * @param visitor
+     */
     @Override
     public void accept(ElementVisitor visitor) {
         visitor.visit(this);

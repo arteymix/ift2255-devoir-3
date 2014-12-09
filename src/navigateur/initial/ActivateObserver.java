@@ -8,6 +8,10 @@ package navigateur.initial;
  */
 public interface ActivateObserver{
 
+    /**
+     *
+     * @param e
+     */
     public abstract void updateActivate(Dossier e);
     
 }

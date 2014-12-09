@@ -14,11 +14,19 @@ public class ElementTailleVisitor implements ElementVisitor {
      */
     private int visites;
 
+    /**
+     *
+     * @param e
+     */
     @Override
     public void visit(Element e) {
         visites += 1;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getVisites() {
         return visites;
     }

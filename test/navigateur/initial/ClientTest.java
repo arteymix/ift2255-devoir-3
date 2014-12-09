@@ -20,13 +20,13 @@ public class ClientTest {
 
         Client client = new Client();
 
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "test");
+        Dossier dossier = new Dossier("test", new Date(), new Date());
         
-        dossier.add(new Fichier("test1", new Date(), new Date(), ""));
-        dossier.add(new Fichier("test2", new Date(), new Date(), ""));
-        dossier.add(new Fichier("test3", new Date(), new Date(), ""));
-        dossier.add(new Fichier("test4", new Date(), new Date(), ""));
-        dossier.add(new Fichier("test5", new Date(), new Date(), ""));
+        dossier.add(new Fichier("", "test1", new Date(), new Date()));
+        dossier.add(new Fichier("", "test2", new Date(), new Date()));
+        dossier.add(new Fichier("", "test3", new Date(), new Date()));
+        dossier.add(new Fichier("", "test4", new Date(), new Date()));
+        dossier.add(new Fichier("", "test5", new Date(), new Date()));
         
         dossier.activate();
         

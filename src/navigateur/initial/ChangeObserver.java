@@ -8,6 +8,10 @@ package navigateur.initial;
  */
 public interface ChangeObserver {
     
+    /**
+     *
+     * @param e
+     */
     public abstract void updateChange(Element e);
 
 }

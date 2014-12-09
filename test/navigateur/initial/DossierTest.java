@@ -1,7 +1,7 @@
 package navigateur.initial;
 
 import java.util.Date;
-import junit.framework.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
@@ -18,16 +18,16 @@ public class DossierTest {
     @Test
     public void testUpdateDelete() {
 
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
-        Fichier fichier = new Fichier("test.java", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("", new Date(), new Date());
+        Fichier fichier = new Fichier("", "test.java", new Date(), new Date());
 
         dossier.add(fichier);
 
-        Assert.assertTrue(dossier.getElements().contains(fichier));
+        assertTrue(dossier.getElements().contains(fichier));
 
         fichier.delete();
 
-        Assert.assertFalse(dossier.getElements().contains(fichier));
+        assertFalse(dossier.getElements().contains(fichier));
     }
 
     /**
@@ -36,25 +36,28 @@ public class DossierTest {
     @Test
     public void testAdd() {
 
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
-        Fichier fichier = new Fichier("test.java", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date());
+        Fichier fichier = new Fichier("", "test.java", new Date(), new Date());
 
         dossier.add(fichier);
 
-        Assert.assertTrue(dossier.getElements().contains(fichier));
-        Assert.assertEquals("/test.java", fichier.getPath());
+        assertTrue(dossier.getElements().contains(fichier));
+        assertEquals("/", fichier.getPath());
     }
 
+    /**
+     *
+     */
     @Test
     public void testAddDossier() {
 
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
-        Dossier dossier2 = new Dossier("test", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date());
+        Dossier dossier2 = new Dossier("test", new Date(), new Date());
 
         dossier.add(dossier2);
 
-        Assert.assertTrue(dossier.getElements().contains(dossier2));
-        Assert.assertEquals("/test", dossier2.getPath());
+        assertTrue(dossier.getElements().contains(dossier2));
+        assertEquals("/", dossier2.getPath());
     }
 
     /**
@@ -63,11 +66,12 @@ public class DossierTest {
     @Test
     public void testActivate() {
 
-        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("", new Date(), new Date());
 
         dossier.activate();
 
-        Assert.assertSame(dossier, Navigateur.getInstance().getDossierActif());
+        assertSame(dossier, Navigateur.getInstance().getDossierActif());
     }
+
 
 }

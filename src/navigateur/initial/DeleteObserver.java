@@ -8,6 +8,10 @@ package navigateur.initial;
  */
 public interface DeleteObserver{
 
+    /**
+     *
+     * @param e
+     */
     public abstract void updateDelete(Element e);
     
 }

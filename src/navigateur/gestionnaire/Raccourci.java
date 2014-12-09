@@ -13,8 +13,16 @@ import java.util.Date;
  */
 public class Raccourci extends navigateur.raccourcis.Raccourci {
 
+    /**
+     *
+     * @param element
+     * @param name
+     * @param creation
+     * @param lastModified
+     * @param path
+     */
     public Raccourci(ElementRaccourciable element, String name, Date creation, Date lastModified, String path) {
-        super(element, name, creation, lastModified, path);
+        super(element, path, name, creation, lastModified);
 
         // ajoute le raccourci nouvellement créé au gestionnaire
         GestionnaireRaccourcis.getInstance().getRaccourcis().add(this);

@@ -10,8 +10,12 @@ public abstract class ElementDecorateur extends Element {
 
     private final Element decoratedElement;
 
+    /**
+     *
+     * @param e
+     */
     public ElementDecorateur(Element e) {
-        super(e.name, e.creation, e.lastModified, e.path);
+        super(e.path, e.name, e.creation, e.lastModified);
         this.decoratedElement = e;
     }
     

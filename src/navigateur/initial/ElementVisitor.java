@@ -8,5 +8,9 @@ package navigateur.initial;
  */
 public interface ElementVisitor {
 
+    /**
+     *
+     * @param e
+     */
     public void visit(Element e);
 }

@@ -11,8 +11,15 @@ import java.util.Date;
  */
 public abstract class Element extends navigateur.initial.Element {
 
-    public Element(String name, Date creation, Date lastModified, String path) {
-        super(name, creation, lastModified, path);
+    /**
+     *
+     * @param path
+     * @param name
+     * @param creation
+     * @param lastModified
+     */
+    public Element(String path, String name, Date creation, Date lastModified) {
+        super(path, name, creation, lastModified);
     }
 
 }

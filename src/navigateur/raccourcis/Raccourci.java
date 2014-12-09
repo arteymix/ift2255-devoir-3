@@ -18,15 +18,31 @@ public class Raccourci extends Element {
      */
     private final ElementRaccourciable elementPointe;
 
-    public Raccourci(ElementRaccourciable element, String name, Date creation, Date lastModified, String path) {
-        super(name, creation, lastModified, path);
+    /**
+     *
+     * @param element
+     * @param path
+     * @param name
+     * @param creation
+     * @param lastModified
+     */
+    public Raccourci(ElementRaccourciable element, String path, String name, Date creation, Date lastModified) {
+        super(path, name, creation, lastModified);
         this.elementPointe = element;
     }
 
+    /**
+     *
+     * @return
+     */
     public ElementRaccourciable getElement() {
         return elementPointe;
     }
 
+    /**
+     *
+     * @param visitor
+     */
     @Override
     public void accept(ElementVisitor visitor) {
         // un raccourcis ne propage pas le visiteur

@@ -1,7 +1,7 @@
 package navigateur.initial;
 
 import java.util.Date;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
@@ -17,13 +17,15 @@ public class ElementEvolutifTest {
      */
     @Test
     public void testEvoluer() {
-        System.out.println("evoluer");
 
-        Fichier fichier = new Fichier("", new Date(), new Date(), "");
+        Fichier fichier = new Fichier("", "", new Date(), new Date());
         ElementEvolutif fichierEvolutif = new ElementEvolutif(fichier);
 
-        Assert.assertEquals(fichierEvolutif.getName(), fichier.getName());
-        
+        assertEquals(fichierEvolutif.getName(), fichier.getName());
+
+        fichierEvolutif.setName("test2.java");
+        assertEquals("test2.java", fichierEvolutif.getName());
+
         fichierEvolutif.evoluer();
     }
 

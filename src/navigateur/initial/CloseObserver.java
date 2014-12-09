@@ -8,6 +8,10 @@ package navigateur.initial;
  */
 public interface CloseObserver{
 
+    /**
+     *
+     * @param e
+     */
     public abstract void updateClose(Element e);
     
 }

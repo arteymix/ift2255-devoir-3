@@ -20,10 +20,23 @@ public class FichierTest {
 
         ElementTailleVisitor visitor = new ElementTailleVisitor();
 
-        Fichier fichier = new Fichier("", new Date(), new Date(), "");
+        Fichier fichier = new Fichier("", "", new Date(), new Date());
         fichier.accept(visitor);
 
         assertEquals(1, visitor.getVisites());
+    }
+
+    /**
+     *
+     */
+    public void testFullPath() {
+
+        Fichier fichier = new Fichier("/", "test.java", new Date(), new Date());
+
+        assertEquals("/test.java", fichier.getFullPath());
+
+        fichier.setPath("test");
+        assertEquals("/test/test.java", fichier.getFullPath());
     }
 
 }

@@ -11,8 +11,15 @@ import java.util.Date;
  */
 public abstract class ElementRaccourciable extends Element {
 
-    public ElementRaccourciable(String name, Date creation, Date lastModified, String path) {
-        super(name, creation, lastModified, path);
+    /**
+     *
+     * @param path
+     * @param name
+     * @param creation
+     * @param lastModified
+     */
+    public ElementRaccourciable(String path, String name, Date creation, Date lastModified) {
+        super(path, name, creation, lastModified);
     }
 
 }
