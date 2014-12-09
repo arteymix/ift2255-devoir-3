@@ -18,7 +18,8 @@ public class Fichier extends Element {
     }
 
     @Override
-    public int taille() {
-        return taille;
+    public void accept(ElementVisitor visitor) {
+        visitor.visit(this);
     }
+
 }

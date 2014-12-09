@@ -6,8 +6,20 @@ package navigateur.initial;
  */
 public class Client {
 
+    /**
+     * Exemple d'application du visiteur.
+     *
+     * Obtenir la taille du dossier actif.
+     *
+     * @return le nombre d'éléments contenu dans le dossier actif.
+     */
     public int getTailleDossierActif() {
-        return Navigateur.getInstance().getDossierActif().taille();
+
+        final ElementTailleVisitor elementTailleVisitor = new ElementTailleVisitor();
+
+        elementTailleVisitor.visit(Navigateur.getInstance().getDossierActif());
+
+        return elementTailleVisitor.getVisites();
     }
-    
+
 }

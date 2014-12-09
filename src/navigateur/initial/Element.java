@@ -34,7 +34,7 @@ public abstract class Element implements Observable {
         this.deleteObservers = new ArrayList<>();
     }
 
-    public abstract int taille();
+    public abstract void accept(ElementVisitor visitor);
 
     public void ouvrir() {
         opened = true;
@@ -51,42 +51,42 @@ public abstract class Element implements Observable {
     }
 
     @Override
-    public void attach(DeleteObserver e) {
+    public void attachDelete(DeleteObserver e) {
         this.deleteObservers.add(e);
     }
 
     @Override
-    public void attach(OpenObserver e) {
+    public void attachOpen(OpenObserver e) {
         this.openObservers.add(e);
     }
 
     @Override
-    public void attach(CloseObserver e) {
+    public void attachClose(CloseObserver e) {
         this.closeObservers.add(e);
     }
 
     @Override
-    public void attach(ChangeObserver e) {
+    public void attachChange(ChangeObserver e) {
         this.changeObservers.add(e);
     }
 
     @Override
-    public void detach(DeleteObserver e) {
+    public void detachDelete(DeleteObserver e) {
         this.deleteObservers.remove(e);
     }
 
     @Override
-    public void detach(OpenObserver e) {
+    public void detachOpen(OpenObserver e) {
         this.openObservers.remove(e);
     }
 
     @Override
-    public void detach(CloseObserver e) {
+    public void detachClose(CloseObserver e) {
         this.closeObservers.remove(e);
     }
 
     @Override
-    public void detach(ChangeObserver e) {
+    public void detachChange(ChangeObserver e) {
         this.changeObservers.remove(e);
     }
 

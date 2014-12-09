@@ -31,9 +31,19 @@
   \section{Diagramme de classes initial}
   \begin{sidewaysfigure}
     \centering
-    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes.tex}}
+    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-initial.tex}}
     \caption{Diagramme de classes initial}
   \end{sidewaysfigure}
+
+  Les différents types d'observateurs ont été découpé en plusieurs interfaces au
+  lieu d'être combinés en une seule afin de laisser la liberté aux éléments de
+  décider à quels types d'observateurs ils désirent s'attacher.
+
+  Par exemple, l'interface \textsf{ActivateObserver} est utile que pour la
+  classe \textsf{Dossier}, ce qui évite d'avoir des fichiers activables.
+
+  La classe \textsf{Element} a été séparée de l'interface \textsf{Observable}
+  afin de mieux découper le programme en composantes réutilisables.
 
   \section{Diagramme de classe modifié}
   \begin{sidewaysfigure}
@@ -42,24 +52,31 @@
     \caption{Diagramme de classes}
   \end{sidewaysfigure}
 
+  Le patron décorateur a été implanté simplement par un agrégat et un héritage
+  de la classe \textsf{Element}. Il s'agit du seul changement introduit pour
+  répondre à l'énoncé.
+
+  Le changement ne pose absolument aucun impact sur les autres classes déjà
+  existantes.
+
   \section{Diagramme de classe avec \textsf{Client}}
   \begin{sidewaysfigure}
     \centering
-    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-b.tex}}
+    \resizebox{\textwidth}{!}{\input{figures/diagramme-de-classes-c.tex}}
     \caption{Diagramme de classes}
   \end{sidewaysfigure}
 
-  \section{Changements}
+  L'introduction d'un Client qui peut déterminer la taille d'un dossier se fait
+  à l'aide d'un patron visiteur.
 
-  Pour les deux sous-sections qui suivent:
-  \begin{itemize}
-    \item identifier les concepts pertinents
-    \item préciser l'impact
-    \item préciser si l'impact est localisé
-  \end{itemize}
+  Le visiteur abstrait est spécialisé pour être accepté par un élément abstrait.
+  Ce qui nous permet de définir n'importe quel type de visiteur.
+
+  Le visiteur de taille est une réalisation du visiteur abstrait
+
+  \section{Introduction de changements}
 
   \subsection{Première requête de changement}
-
   Pour effectuer le changement, nous introduisons la classe \textsf{Raccourci}
   et \textsf{ElementRaccourciable}. Un raccourci possède un agrégat vers une
   instance d'\textsf{ElementRaccourciable}.
@@ -83,10 +100,14 @@
   problème cycle pour le calcul de la taille d'un dossier dans le cas ou un
   dossier contiendrait un raccourcis qui pointerait vers ce même dossier.
 
+  L'impact n'est pas localisé, car il affecte des parties existantes du
+  programme. Notamment les classes \textsf{Fichier} et \textsf{Dossier} qui
+  doivent hériter d'un nouvelle classe.
+
   \subsection{Deuxième requête de changement}
-  Pour implanter ce changement, nous faisons implanter l'interface
-  \textsf{DeleteObserver} à la classe \textsf{Raccourci}, de telle sorte que le
-  raccouci est notifié lorsque son élément est détruit.
+  Pour implanter ce changement, nous introduisons le singleton
+  \textsf{GestionnaireRaccourcis} et nous lui faisons implanter l'interface
+  \textsf{DeleteObserver}.
 
   % ajout du deuxième diagramme
   \begin{figure}
@@ -95,12 +116,13 @@
     \caption{Diagramme de classes pour le gestionnaire de raccourcis}
   \end{figure}
 
-  Lorsqu'un un raccourcis est créé, il attache le gestionnaire et tant que
+  Lorsqu'un un raccourcis est créé, il attache le gestionnaire en tant que
   DeleteObserver de l'élément qu'il pointe. Lorsque l'élément pointé est
   supprimé, le gestionnaire capture l'événement et est en mesure de supprimer le
   raccourcis approprié.
 
-  L'implantation a pour ensemble d'impact initial la \textsf{Element} et
-  l'interface \textsf{DeleteObserver}.
+  Le changement est localisé, car il n'affecte pas le code existant. Seule
+  la classe \textsf{Raccourci} est modifiée pour s'enregistrer auprès du
+  gestionnaire lorsqu'il est créé.
 
 \end{document}

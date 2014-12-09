@@ -15,7 +15,7 @@ public class Raccourci extends navigateur.raccourcis.Raccourci {
         super(element, name, creation, lastModified, path);
 
         // on attache l'élément pointé au gestionnaire de raccourcis
-        element.attach(GestionnaireRaccourcis.getInstance());
+        element.attachDelete(GestionnaireRaccourcis.getInstance());
     }
 
 }

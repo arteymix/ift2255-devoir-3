@@ -18,15 +18,11 @@ public class Dossier extends Element implements DeleteObserver {
         super(name, creation, lastModified, path);
         elements = new ArrayList<>();
         activateObservers = new ArrayList<>();
-    }
 
-    @Override
-    public int taille() {
-        int t = 0;
-        for (Element e : elements) {
-            t += e.taille();
-        }
-        return t;
+        this.attachActivate(Navigateur.getInstance());
+        this.attachClose(Navigateur.getInstance());
+        this.attachOpen(Navigateur.getInstance());
+        this.attachDelete(Navigateur.getInstance());
     }
 
     @Override
@@ -51,17 +47,27 @@ public class Dossier extends Element implements DeleteObserver {
         notifyActivate();
     }
 
-    public void attach(ActivateObserver observer) {
+    public final void attachActivate(ActivateObserver observer) {
         activateObservers.add(observer);
     }
 
-    public void detach(ActivateObserver observer) {
+    public void detachActivate(ActivateObserver observer) {
         activateObservers.remove(observer);
     }
 
     public void notifyActivate() {
         for (ActivateObserver observer : activateObservers) {
             observer.updateActivate(this);
+        }
+    }
+
+    @Override
+    public void accept(ElementVisitor visitor) {
+        visitor.visit(this);
+
+        // propage le visiteur
+        for (Element e : elements) {
+            e.accept(visitor);
         }
     }
 

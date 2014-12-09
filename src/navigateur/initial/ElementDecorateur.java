@@ -12,10 +12,15 @@ public abstract class ElementDecorateur extends Element {
         super(e.name, e.creation, e.lastModified, e.path);
         this.decoratedElement = e;
     }
-
+    
+    /**
+     * Propage le visiteur à l'élément décoré
+     * 
+     * @param e 
+     */
     @Override
-    public int taille() {
-        return decoratedElement.taille();
+    public void accept(ElementVisitor e) {
+        this.decoratedElement.accept(e);
     }
 
 }

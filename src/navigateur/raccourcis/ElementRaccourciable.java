@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * Élément pouvant être pointé par un Raccourci.
- * 
+ *
  * @author owner
  */
 public abstract class ElementRaccourciable extends Element {
@@ -13,6 +13,4 @@ public abstract class ElementRaccourciable extends Element {
         super(name, creation, lastModified, path);
     }
 
-    @Override
-    public abstract int taille();
 }

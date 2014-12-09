@@ -9,14 +9,7 @@ package navigateur.initial;
  *
  * @author guillaume
  */
-public class ElementEvolutif extends ElementDecorateur {
-
-    public ElementEvolutif(Element e) {
-        super(e);
-    }
-
-    public void evoluer() {
-        // evoluer...
-    }
-
+public interface ElementVisitor {
+    
+    public void visit(Element e);
 }

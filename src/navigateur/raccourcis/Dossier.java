@@ -6,6 +6,7 @@ import java.util.List;
 
 import navigateur.initial.DeleteObserver;
 import navigateur.initial.Element;
+import navigateur.initial.ElementVisitor;
 
 /**
  * Dossier.
@@ -25,21 +26,15 @@ public class Dossier extends ElementRaccourciable implements DeleteObserver {
     }
 
     @Override
-    public int taille() {
-        int taille = 0;
-        
-        for (Element e : elements) {
-            if (e instanceof ElementRaccourciable) {
-                taille += e.taille();
-            }
-        }
-
-        return taille;
+    public void updateDelete(Element e) {
+        elements.remove(e);
     }
 
     @Override
-    public void updateDelete(Element e) {
-        elements.remove(e);
+    public void accept(ElementVisitor visitor) {
+        for (Element element : elements) {
+            visitor.visit(element);
+        }
     }
 
 }
