@@ -3,7 +3,9 @@ package navigateur.initial;
 /**
  * Visiteur pour la taille des éléments.
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class ElementTailleVisitor implements ElementVisitor {
 

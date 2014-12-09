@@ -6,7 +6,9 @@ import java.util.List;
 
 /**
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class Dossier extends Element implements DeleteObserver {
 
@@ -25,6 +27,11 @@ public class Dossier extends Element implements DeleteObserver {
         this.attachDelete(Navigateur.getInstance());
     }
 
+    /**
+     * Capture les suppression des éléments contenus.
+     *
+     * @param e
+     */
     @Override
     public void updateDelete(Element e) {
         elements.remove(e);
@@ -39,11 +46,11 @@ public class Dossier extends Element implements DeleteObserver {
      */
     public boolean add(Element e) {
         e.setPath(this.path);
+        e.attachDelete(this);
         return elements.add(e);
     }
 
     public void activate() {
-
         notifyActivate();
     }
 
@@ -69,6 +76,10 @@ public class Dossier extends Element implements DeleteObserver {
         for (Element e : elements) {
             e.accept(visitor);
         }
+    }
+
+    public List<Element> getElements() {
+        return elements;
     }
 
 }

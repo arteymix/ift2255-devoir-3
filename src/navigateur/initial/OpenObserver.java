@@ -2,7 +2,9 @@ package navigateur.initial;
 
 /**
  *
- * @author owner
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public interface OpenObserver {
 

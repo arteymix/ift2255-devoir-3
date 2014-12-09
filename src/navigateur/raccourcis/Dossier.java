@@ -14,7 +14,9 @@ import navigateur.initial.ElementVisitor;
  * L'héritage avec ElementRaccourciable nous force à redéfinir la classe, car
  * elle n'est plus compatible avec Dossier original.
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class Dossier extends ElementRaccourciable implements DeleteObserver {
 
@@ -32,8 +34,10 @@ public class Dossier extends ElementRaccourciable implements DeleteObserver {
 
     @Override
     public void accept(ElementVisitor visitor) {
+        visitor.visit(this);
+
         for (Element element : elements) {
-            visitor.visit(element);
+            element.accept(visitor);
         }
     }
 

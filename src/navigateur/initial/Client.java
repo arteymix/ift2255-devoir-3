@@ -2,7 +2,9 @@ package navigateur.initial;
 
 /**
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class Client {
 
@@ -17,7 +19,7 @@ public class Client {
 
         final ElementTailleVisitor elementTailleVisitor = new ElementTailleVisitor();
 
-        elementTailleVisitor.visit(Navigateur.getInstance().getDossierActif());
+        Navigateur.getInstance().getDossierActif().accept(elementTailleVisitor);
 
         return elementTailleVisitor.getVisites();
     }

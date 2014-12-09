@@ -5,7 +5,9 @@ import java.util.Date;
 /**
  * Élément abstrait qui peut soit être un ElementRaccourciable ou un Raccourci.
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public abstract class Element extends navigateur.initial.Element {
 

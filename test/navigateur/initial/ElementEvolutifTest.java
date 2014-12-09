@@ -6,7 +6,9 @@ import org.junit.Test;
 
 /**
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class ElementEvolutifTest {
 

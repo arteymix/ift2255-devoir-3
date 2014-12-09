@@ -6,7 +6,9 @@ import java.util.List;
 
 /**
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public abstract class Element implements Observable {
 
@@ -150,7 +152,7 @@ public abstract class Element implements Observable {
     }
 
     public void setPath(String path) {
-        this.path = path + '\\' + this.name;
+        this.path = path + '/' + this.name;
         notifyChange();
     }
 

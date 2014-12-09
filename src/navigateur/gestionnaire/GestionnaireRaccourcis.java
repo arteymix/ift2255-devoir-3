@@ -8,7 +8,9 @@ import navigateur.raccourcis.Raccourci;
 
 /**
  *
- * @author owner
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class GestionnaireRaccourcis implements DeleteObserver {
 
@@ -39,11 +41,11 @@ public class GestionnaireRaccourcis implements DeleteObserver {
      */
     @Override
     public void updateDelete(Element e) {
-        for (Raccourci raccourci : raccourcis) {
-            if (raccourci.getElement() == e) {
-                raccourcis.remove(raccourci);
-            }
-        }
+        raccourcis.removeIf((Raccourci r) -> r.getElement() == e);
+    }
+
+    public List<Raccourci> getRaccourcis() {
+        return raccourcis;
     }
 
 }

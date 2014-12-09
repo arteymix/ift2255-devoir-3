@@ -5,7 +5,9 @@ import java.util.Date;
 /**
  * Élément pouvant être pointé par un Raccourci.
  *
- * @author owner
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public abstract class ElementRaccourciable extends Element {
 

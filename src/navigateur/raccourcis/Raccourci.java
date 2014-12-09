@@ -8,8 +8,9 @@ import navigateur.initial.ElementVisitor;
  *
  * Un raccourcis ne propage as le visiteur, sinon on peut former des cycles.
  * 
- * @author owner
- */
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier */
 public class Raccourci extends Element {
 
     /**

@@ -6,7 +6,9 @@ import org.junit.Test;
 
 /**
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class NavigateurTest {
 
@@ -18,7 +20,7 @@ public class NavigateurTest {
 
         Navigateur result = Navigateur.getInstance();
 
-        // Respect su singleton
+        // Respect du singleton
         Assert.assertSame(Navigateur.getInstance(), Navigateur.getInstance());
     }
 
@@ -28,7 +30,7 @@ public class NavigateurTest {
     @Test
     public void testUpdateActivate() {
 
-        Dossier dossier = new Dossier("", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
 
         dossier.activate();
 
@@ -41,7 +43,7 @@ public class NavigateurTest {
     @Test
     public void testUpdateClose() {
 
-        Dossier dossier = new Dossier("", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
 
         dossier.ouvrir();
 
@@ -57,7 +59,7 @@ public class NavigateurTest {
      */
     @Test
     public void testUpdateOpen() {
-        Dossier dossier = new Dossier("", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
 
         dossier.ouvrir();
 
@@ -71,7 +73,7 @@ public class NavigateurTest {
     @Test
     public void testUpdateDelete() {
 
-        Dossier dossier = new Dossier("", new Date(), new Date(), "");
+        Dossier dossier = new Dossier("/", new Date(), new Date(), "");
 
         dossier.ouvrir();
 

@@ -1,10 +1,10 @@
 package navigateur.initial;
 
-import navigateur.initial.Element;
-
 /**
  *
- * @author owner
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public interface DeleteObserver{
 

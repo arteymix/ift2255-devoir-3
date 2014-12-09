@@ -5,7 +5,9 @@ import java.util.List;
 
 /**
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class Navigateur implements ActivateObserver, ChangeObserver, CloseObserver, OpenObserver, DeleteObserver {
 
@@ -46,7 +48,6 @@ public class Navigateur implements ActivateObserver, ChangeObserver, CloseObserv
         if (e instanceof Dossier && !dossiersOuverts.contains((Dossier) e)) {
             dossiersOuverts.add((Dossier) e);
             System.out.println("Ouverture du dossier " + e.getName() + " situé à " + e.getPath());
-            //Mettre ici les methodes pour afficher le dosssier
         }
     }
 

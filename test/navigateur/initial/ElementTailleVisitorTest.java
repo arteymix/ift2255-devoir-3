@@ -6,7 +6,9 @@ import org.junit.Test;
 
 /**
  *
- * @author guillaume
+ * @author Guillaume Poirier-Morency
+ * @author Vincent Antaki
+ * @author Émile Trottier
  */
 public class ElementTailleVisitorTest {
 
@@ -42,7 +44,7 @@ public class ElementTailleVisitorTest {
 
         ElementTailleVisitor visitor = new ElementTailleVisitor();
 
-        visitor.visit(dossier);
+        dossier.accept(visitor);
 
         // 5 fichiers et 1 dossier
         Assert.assertEquals(6, visitor.getVisites());
